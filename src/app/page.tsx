@@ -57,7 +57,7 @@ export default function Home() {
               className="text-center" 
             />
             <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
-              SZN 4 Tickets Coming Soon.
+              Tickets Live Soon.
             </p>
           </div>
 
