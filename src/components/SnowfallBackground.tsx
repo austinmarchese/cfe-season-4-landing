@@ -41,8 +41,8 @@ export const SnowfallBackground: React.FC<SnowfallBackgroundProps> = ({ classNam
               width: `${flake.size}px`,
               height: `${flake.size}px`,
               opacity: flake.opacity,
-              background: 'radial-gradient(circle, #C0C0C0 0%, #A8A8A8 50%, #808080 100%)',
-              boxShadow: '0 0 6px rgba(192, 192, 192, 0.8)',
+              background: 'radial-gradient(circle, #404040 0%, #303030 50%, #202020 100%)',
+              boxShadow: '0 0 6px rgba(64, 64, 64, 0.8)',
             }}
           />
         </div>

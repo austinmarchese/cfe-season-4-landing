@@ -122,12 +122,12 @@ export default function Home() {
           )}
         </div>
 
-                {/* Subtle silver sparkle effects */}
+                {/* Subtle black sparkle effects */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-gray-300 rounded-full animate-ping opacity-60" style={{ animationDelay: '0s', boxShadow: '0 0 6px rgba(192, 192, 192, 0.8)' }} />
-                  <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-gray-400 rounded-full animate-ping opacity-40" style={{ animationDelay: '2s', boxShadow: '0 0 4px rgba(192, 192, 192, 0.6)' }} />
-                  <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gray-300 rounded-full animate-ping opacity-50" style={{ animationDelay: '4s', boxShadow: '0 0 5px rgba(192, 192, 192, 0.7)' }} />
-                  <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-gray-400 rounded-full animate-ping opacity-30" style={{ animationDelay: '6s', boxShadow: '0 0 4px rgba(192, 192, 192, 0.5)' }} />
+                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-gray-800 rounded-full animate-ping opacity-60" style={{ animationDelay: '0s', boxShadow: '0 0 6px rgba(64, 64, 64, 0.8)' }} />
+                  <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-gray-900 rounded-full animate-ping opacity-40" style={{ animationDelay: '2s', boxShadow: '0 0 4px rgba(64, 64, 64, 0.6)' }} />
+                  <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gray-800 rounded-full animate-ping opacity-50" style={{ animationDelay: '4s', boxShadow: '0 0 5px rgba(64, 64, 64, 0.7)' }} />
+                  <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-gray-900 rounded-full animate-ping opacity-30" style={{ animationDelay: '6s', boxShadow: '0 0 4px rgba(64, 64, 64, 0.5)' }} />
                 </div>
       </div>
 
