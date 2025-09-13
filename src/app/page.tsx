@@ -72,8 +72,8 @@ export default function Home() {
               className={`
                 w-full px-4 py-3 text-center text-lg font-semibold rounded-full
                 ${isCountdownComplete 
-                  ? 'bg-gray-800/50 text-white placeholder-gray-300 border border-gray-600/50 focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/30' 
-                  : 'bg-gray-700/50 text-gray-500 placeholder-gray-500 border border-gray-600/30 cursor-not-allowed'
+                  ? 'bg-cfe-gold/10 text-white placeholder-gray-300 border border-gray-600/50 focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/30' 
+                  : 'bg-cfe-gold/10 text-cfe-gold border border-cfe-gold/30 cursor-not-allowed'
                 }
                 backdrop-blur-sm transition-all duration-300
               `}
