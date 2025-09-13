@@ -32,7 +32,7 @@ export const SnowfallBackground: React.FC<SnowfallBackgroundProps> = ({ classNam
             animationDelay: `${flake.animationDelay}s`,
             animationDuration: `${flake.animationDuration}s`,
             '--flake-size': `${flake.size}px`,
-            '--flake-opacity': flake.opacity,
+            '--flake-opacity': flake.opacity.toString(),
           } as React.CSSProperties & { [key: string]: string }}
         >
           <div

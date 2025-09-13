@@ -44,8 +44,8 @@ export default function Home() {
           <div className="w-full max-w-[280px] md:max-w-sm">
             <VideoPlayer 
               videoSrc="/CFE Preview.mp4"
-              title="CFE Season 4 Preview"
-              className="w-full"
+              title="SZN4 Coming Soon"
+              className="text-center"
             />
           </div>
 
