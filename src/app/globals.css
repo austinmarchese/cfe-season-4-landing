@@ -53,20 +53,20 @@
   --radius: 0.625rem;
   /* CFE Landing Page Colors - Simplified Green & Dark Gold Theme */
   --background: oklch(0.08 0.02 150); /* Very dark green background */
-  --foreground: oklch(0.95 0.01 60); /* Light text */
+  --foreground: #ffffff; /* Pure white text */
   --card: oklch(0.12 0.03 150);
-  --card-foreground: oklch(0.95 0.01 60);
+  --card-foreground: #ffffff;
   --popover: oklch(0.12 0.03 150);
-  --popover-foreground: oklch(0.95 0.01 60);
+  --popover-foreground: #ffffff;
   
   --primary: #FFD600; /* True CFE Gold - CMYK 0-16-100-0 */
-  --primary-foreground: oklch(0.95 0.01 60);
+  --primary-foreground: #000000; /* Black text on gold */
   --secondary: oklch(0.15 0.03 150);
-  --secondary-foreground: oklch(0.95 0.01 60);
+  --secondary-foreground: #ffffff;
   --muted: oklch(0.15 0.03 150);
-  --muted-foreground: oklch(0.7 0.05 60);
+  --muted-foreground: #a1a1aa; /* Neutral gray */
   --accent: oklch(0.3 0.15 150); /* Forest green */
-  --accent-foreground: oklch(0.95 0.01 60);
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.7 0.15 65);
   --border: oklch(0.2 0.05 150);
   --input: oklch(0.18 0.04 150);
@@ -86,11 +86,11 @@
   --chart-5: #FFD600;
   
   --sidebar: oklch(0.12 0.03 150);
-  --sidebar-foreground: oklch(0.95 0.01 60);
+  --sidebar-foreground: #ffffff;
   --sidebar-primary: #FFD600;
-  --sidebar-primary-foreground: oklch(0.95 0.01 60);
+  --sidebar-primary-foreground: #000000;
   --sidebar-accent: oklch(0.15 0.03 150);
-  --sidebar-accent-foreground: oklch(0.95 0.01 60);
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: oklch(0.2 0.05 150);
   --sidebar-ring: #FFD600;
 }
