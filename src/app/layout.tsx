@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thecfe-1zu203muc-austinmarcheses-projects.vercel.app'),
-  title: "CFE Season 4 - Exclusive Performance Event",
+  title: "CFE - The Party of the Year",
   description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
-  keywords: "CFE, Season 4, performance, event, entertainment, tickets, exclusive, concert",
-  authors: [{ name: "CFE Productions" }],
+  keywords: "CFE, Christmas, Formal, Extravaganza",
+  authors: [{ name: "The Incubator" }],
   robots: "index, follow",
   openGraph: {
     title: "CFE Season 4 - Exclusive Performance Event",

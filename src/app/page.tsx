@@ -34,81 +34,90 @@ export default function Home() {
       <AnimatedWaves className="opacity-30" />
       
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-2 space-y-4">
-        {/* Video Player */}
-        <div className="w-full max-w-[200px] md:max-w-xs">
-          <VideoPlayer 
-            videoSrc="/CFE Preview.mp4"
-            title="CFE Season 4 Preview"
-            className="w-full"
-          />
-        </div>
-
-        {/* Countdown Timer */}
-        <div className="w-full">
-          <CountdownTimer 
-            targetDate={tomorrow} 
-            onComplete={() => setIsCountdownComplete(true)}
-            className="text-center" 
-          />
-        </div>
-
-        {/* Secret Code Input */}
-        <div className="w-full max-w-sm px-2">
-          <input
-            type="text"
-            value={secretCode}
-            onChange={handleCodeChange}
-            disabled={!isCountdownComplete}
-            placeholder={isCountdownComplete ? "Enter secret code" : "Code required once live"}
-            className={`
-              w-full px-4 py-3 text-center text-lg font-semibold rounded-full
-              ${isCountdownComplete 
-                ? 'bg-gray-800/50 text-white placeholder-gray-300 border border-gray-600/50 focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/30' 
-                : 'bg-gray-700/50 text-gray-500 placeholder-gray-500 border border-gray-600/30 cursor-not-allowed'
-              }
-              backdrop-blur-sm transition-all duration-300
-            `}
-          />
-        </div>
-
-        {/* Purchase Tickets Button - Only visible with valid code */}
-        {isCountdownComplete && isCodeValid && (
-          <div className="text-center w-full px-2">
-            <Button
-              size="lg"
-              onClick={handlePurchaseClick}
-              className="
-                px-8 py-3 text-lg font-bold uppercase tracking-wider
-                bg-gradient-to-r from-cfe-gold via-cfe-emerald to-cfe-gold hover:from-cfe-emerald hover:via-cfe-gold hover:to-cfe-emerald
-                text-white border-0 rounded-full
-                shadow-2xl shadow-cfe-gold/25 hover:shadow-cfe-emerald/25
-                hover:scale-105
-                transition-all duration-300
-                backdrop-blur-sm
-                relative overflow-hidden
-                group
-                w-full max-w-sm
-              "
-            >
-              <span className="relative z-10">Purchase Tickets - $250</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-            </Button>
-            
-            <p className="mt-1 text-gray-300 text-xs">
-              CFE Season 4 • Secure Venmo payment • Limited availability
-            </p>
+      <div className="relative z-10 flex flex-col items-center min-h-screen px-4 pt-8 pb-6">
+        {/* Top spacer */}
+        <div className="flex-shrink-0 h-2"></div>
+        
+        {/* Content container */}
+        <div className="flex-1 flex flex-col items-center justify-center space-y-4 w-full">
+          {/* Video Player */}
+          <div className="w-full max-w-[280px] md:max-w-sm">
+            <VideoPlayer 
+              videoSrc="/CFE Preview.mp4"
+              title="CFE Season 4 Preview"
+              className="w-full"
+            />
           </div>
-        )}
 
-        {/* Status message when countdown complete but no valid code */}
-        {isCountdownComplete && !isCodeValid && (
-          <div className="text-center w-full px-2">
-            <p className="text-gray-400 text-sm">
-              Enter the secret code to access tickets
-            </p>
+          {/* Countdown Timer */}
+          <div className="w-full">
+            <CountdownTimer 
+              targetDate={tomorrow} 
+              onComplete={() => setIsCountdownComplete(true)}
+              className="text-center" 
+            />
           </div>
-        )}
+
+          {/* Secret Code Input */}
+          <div className="w-full max-w-sm px-2">
+            <input
+              type="text"
+              value={secretCode}
+              onChange={handleCodeChange}
+              disabled={!isCountdownComplete}
+              placeholder={isCountdownComplete ? "Enter secret code" : "Code required once live"}
+              className={`
+                w-full px-4 py-3 text-center text-lg font-semibold rounded-full
+                ${isCountdownComplete 
+                  ? 'bg-gray-800/50 text-white placeholder-gray-300 border border-gray-600/50 focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/30' 
+                  : 'bg-gray-700/50 text-gray-500 placeholder-gray-500 border border-gray-600/30 cursor-not-allowed'
+                }
+                backdrop-blur-sm transition-all duration-300
+              `}
+            />
+          </div>
+        </div>
+
+        {/* Bottom section for button */}
+        <div className="flex-shrink-0 w-full">
+          {/* Purchase Tickets Button - Only visible with valid code */}
+          {isCountdownComplete && isCodeValid && (
+            <div className="text-center w-full px-2">
+              <Button
+                size="lg"
+                onClick={handlePurchaseClick}
+                className="
+                  px-8 py-3 text-lg font-bold uppercase tracking-wider
+                  bg-gradient-to-r from-cfe-gold via-cfe-emerald to-cfe-gold hover:from-cfe-emerald hover:via-cfe-gold hover:to-cfe-emerald
+                  text-white border-0 rounded-full
+                  shadow-2xl shadow-cfe-gold/25 hover:shadow-cfe-emerald/25
+                  hover:scale-105
+                  transition-all duration-300
+                  backdrop-blur-sm
+                  relative overflow-hidden
+                  group
+                  w-full max-w-sm
+                "
+              >
+                <span className="relative z-10">Purchase Tickets - $250</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              </Button>
+              
+              <p className="mt-1 text-gray-300 text-xs">
+                CFE Season 4 • Secure Venmo payment • Limited availability
+              </p>
+            </div>
+          )}
+
+          {/* Status message when countdown complete but no valid code */}
+          {isCountdownComplete && !isCodeValid && (
+            <div className="text-center w-full px-2">
+              <p className="text-gray-400 text-sm">
+                Enter the secret code to access tickets
+              </p>
+            </div>
+          )}
+        </div>
 
         {/* Subtle sparkle effects */}
         <div className="absolute inset-0 pointer-events-none">
