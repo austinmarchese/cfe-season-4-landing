@@ -57,7 +57,7 @@ export default function Home() {
               className="text-center" 
             />
             <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
-              Tickets Live Soon.
+              Tickets Live Tomorrow.
             </p>
           </div>
 
