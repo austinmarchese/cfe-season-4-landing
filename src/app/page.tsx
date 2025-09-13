@@ -29,7 +29,7 @@ export default function Home() {
     }
   };
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black">
+    <div className="relative min-h-screen overflow-hidden bg-green-950">
       {/* Snowfall background */}
       <SnowfallBackground className="opacity-80" />
       
@@ -132,7 +132,7 @@ export default function Home() {
       </div>
 
       {/* Bottom gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-green-950/50 to-transparent pointer-events-none" />
     </div>
   );
 }

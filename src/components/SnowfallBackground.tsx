@@ -19,8 +19,8 @@ export const SnowfallBackground: React.FC<SnowfallBackgroundProps> = ({ classNam
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {/* Black background */}
-      <div className="absolute inset-0 bg-black" />
+      {/* Dark green background */}
+      <div className="absolute inset-0 bg-green-950" />
       
       {/* Snowflakes */}
       {snowflakes.map((flake) => (
