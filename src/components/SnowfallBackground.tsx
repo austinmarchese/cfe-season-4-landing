@@ -8,7 +8,7 @@ interface SnowfallBackgroundProps {
 
 export const SnowfallBackground: React.FC<SnowfallBackgroundProps> = ({ className = "" }) => {
   // Generate random snowflakes
-  const snowflakes = Array.from({ length: 50 }, (_, i) => ({
+  const snowflakes = Array.from({ length: 100 }, (_, i) => ({
     id: i,
     left: Math.random() * 100,
     animationDelay: Math.random() * 10,

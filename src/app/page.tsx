@@ -115,7 +115,7 @@ export default function Home() {
           {/* Status message when countdown complete but no valid code */}
           {isCountdownComplete && !isCodeValid && (
             <div className="text-center w-full px-2">
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-40party of 0 text-sm">
                 Enter the secret code to access tickets
               </p>
             </div>
