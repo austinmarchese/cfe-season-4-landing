@@ -14,14 +14,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thecfe.net'),
-  title: "The CFE - It's the party of the year",
-  description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
+  title: "It's the party of the year",
+  description: "\"If you aren't here, you're nobody.\" - CFE Attendee",
   keywords: "CFE, Christmas, Formal, Extravaganza",
   authors: [{ name: "The Incubator" }],
   robots: "index, follow",
   openGraph: {
-    title: "The CFE - It's the party of the year",
-    description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
+    title: "It's the party of the year",
+    description: "\"If you aren't here, you're nobody.\" - CFE Attendee",
     type: "website",
     locale: "en_US",
     siteName: "CFE Events",
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "The CFE - It's the party of the year",
-    description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
+    title: "It's the party of the year",
+    description: "\"If you aren't here, you're nobody.\" - CFE Attendee",
     creator: "@TheIncubator",
     site: "@TheIncubator",
   },
