@@ -68,14 +68,14 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
     return (
       <div className={`flex items-center justify-center space-x-4 ${className}`}>
       <div className="text-center">
-        <div className="text-2xl md:text-4xl font-mono font-bold text-white digital-display flex justify-center items-center space-x-2">
-          <span className="w-8 text-center">02</span>
+        <div className="text-xl md:text-3xl font-mono font-bold text-white digital-display flex justify-center items-center space-x-2">
+          <span className="w-6 text-center">02</span>
           <span>:</span>
-          <span className="w-8 text-center">15</span>
+          <span className="w-6 text-center">15</span>
           <span>:</span>
-          <span className="w-8 text-center">31</span>
+          <span className="w-6 text-center">31</span>
           <span>:</span>
-          <span className="w-8 text-center">29</span>
+          <span className="w-6 text-center">29</span>
         </div>
       </div>
       </div>
@@ -85,14 +85,14 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
   return (
     <div className={`flex items-center justify-center space-x-4 ${className}`}>
       <div className="text-center">
-        <div className="text-2xl md:text-4xl font-mono font-bold text-white digital-display flex justify-center items-center space-x-2">
-          <span className="w-8 text-center">{formatNumber(timeLeft.days)}</span>
+        <div className="text-xl md:text-3xl font-mono font-bold text-white digital-display flex justify-center items-center space-x-2">
+          <span className="w-6 text-center">{formatNumber(timeLeft.days)}</span>
           <span>:</span>
-          <span className="w-8 text-center">{formatNumber(timeLeft.hours)}</span>
+          <span className="w-6 text-center">{formatNumber(timeLeft.hours)}</span>
           <span>:</span>
-          <span className="w-8 text-center">{formatNumber(timeLeft.minutes)}</span>
+          <span className="w-6 text-center">{formatNumber(timeLeft.minutes)}</span>
           <span>:</span>
-          <span className="w-8 text-center">{formatNumber(timeLeft.seconds)}</span>
+          <span className="w-6 text-center">{formatNumber(timeLeft.seconds)}</span>
         </div>
       </div>
       

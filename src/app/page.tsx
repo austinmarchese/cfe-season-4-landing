@@ -8,14 +8,23 @@ import { useState } from "react";
 
 export default function Home() {
   const [isCountdownComplete, setIsCountdownComplete] = useState(false);
+  const [secretCode, setSecretCode] = useState('');
+  const [isCodeValid, setIsCodeValid] = useState(false);
   
   // Calculate tomorrow at 4:37 PM EST
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   tomorrow.setHours(16, 37, 0, 0); // 4:37 PM
   
+  const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const code = e.target.value;
+    setSecretCode(code);
+    // You can change this secret code to whatever you want
+    setIsCodeValid(code === 'CFE2024');
+  };
+  
   const handlePurchaseClick = () => {
-    if (isCountdownComplete) {
+    if (isCountdownComplete && isCodeValid) {
       window.open('https://account.venmo.com/payment-link?amount=250&note=CFE%20Season%204&recipients=Austin-marchese&txn=pay', '_blank');
     }
   };
@@ -25,7 +34,7 @@ export default function Home() {
       <AnimatedWaves className="opacity-30" />
       
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-4 space-y-6">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-2 space-y-4">
         {/* Video Player */}
         <div className="w-full max-w-xs">
           <VideoPlayer 
@@ -44,43 +53,62 @@ export default function Home() {
           />
         </div>
 
-        {/* Purchase Tickets Button */}
-        <div className="text-center w-full px-2">
-          <Button
-            size="lg"
+        {/* Secret Code Input */}
+        <div className="w-full max-w-sm px-2">
+          <input
+            type="text"
+            value={secretCode}
+            onChange={handleCodeChange}
             disabled={!isCountdownComplete}
-            onClick={handlePurchaseClick}
+            placeholder={isCountdownComplete ? "Enter secret code" : "Code required once live"}
             className={`
-              px-8 py-4 text-lg font-bold uppercase tracking-wider
+              w-full px-4 py-3 text-center text-lg font-semibold rounded-full
               ${isCountdownComplete 
-                ? 'bg-gradient-to-r from-cfe-gold via-cfe-emerald to-cfe-gold hover:from-cfe-emerald hover:via-cfe-gold hover:to-cfe-emerald cursor-pointer' 
-                : 'bg-gray-600 cursor-not-allowed opacity-50'
+                ? 'bg-white/10 text-white placeholder-gray-300 border border-white/20 focus:border-cfe-gold focus:outline-none focus:ring-2 focus:ring-cfe-gold/50' 
+                : 'bg-gray-600/50 text-gray-400 placeholder-gray-500 border border-gray-500/30 cursor-not-allowed'
               }
-              text-white border-0 rounded-full
-              shadow-2xl ${isCountdownComplete ? 'shadow-cfe-gold/25 hover:shadow-cfe-emerald/25' : 'shadow-gray-500/25'}
-              ${isCountdownComplete ? 'hover:scale-105' : ''}
-              transition-all duration-300
-              backdrop-blur-sm
-              relative overflow-hidden
-              group
-              w-full max-w-sm
+              backdrop-blur-sm transition-all duration-300
             `}
-          >
-            <span className="relative z-10">
-              {isCountdownComplete ? 'Purchase Tickets - $250' : 'Tickets Available Soon'}
-            </span>
-            {isCountdownComplete && (
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-            )}
-          </Button>
-          
-          <p className="mt-2 text-gray-300 text-xs">
-            {isCountdownComplete 
-              ? 'CFE Season 4 • Secure Venmo payment • Limited availability'
-              : 'Tickets will be available when countdown reaches zero'
-            }
-          </p>
+          />
         </div>
+
+        {/* Purchase Tickets Button - Only visible with valid code */}
+        {isCountdownComplete && isCodeValid && (
+          <div className="text-center w-full px-2">
+            <Button
+              size="lg"
+              onClick={handlePurchaseClick}
+              className="
+                px-8 py-3 text-lg font-bold uppercase tracking-wider
+                bg-gradient-to-r from-cfe-gold via-cfe-emerald to-cfe-gold hover:from-cfe-emerald hover:via-cfe-gold hover:to-cfe-emerald
+                text-white border-0 rounded-full
+                shadow-2xl shadow-cfe-gold/25 hover:shadow-cfe-emerald/25
+                hover:scale-105
+                transition-all duration-300
+                backdrop-blur-sm
+                relative overflow-hidden
+                group
+                w-full max-w-sm
+              "
+            >
+              <span className="relative z-10">Purchase Tickets - $250</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+            </Button>
+            
+            <p className="mt-1 text-gray-300 text-xs">
+              CFE Season 4 • Secure Venmo payment • Limited availability
+            </p>
+          </div>
+        )}
+
+        {/* Status message when countdown complete but no valid code */}
+        {isCountdownComplete && !isCodeValid && (
+          <div className="text-center w-full px-2">
+            <p className="text-gray-300 text-sm">
+              Enter the secret code to access tickets
+            </p>
+          </div>
+        )}
 
         {/* Subtle sparkle effects */}
         <div className="absolute inset-0 pointer-events-none">
