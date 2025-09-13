@@ -2,7 +2,7 @@
 
 import CountdownTimer from "@/components/CountdownTimer";
 import VideoPlayer from "@/components/VideoPlayer";
-import AnimatedWaves from "@/components/AnimatedWaves";
+import SnowfallBackground from "@/components/SnowfallBackground";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -29,9 +29,9 @@ export default function Home() {
     }
   };
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-cfe-forest-green via-cfe-gold/30 to-cfe-emerald">
-      {/* Animated background waves */}
-      <AnimatedWaves className="opacity-30" />
+    <div className="relative min-h-screen overflow-hidden bg-black">
+      {/* Snowfall background */}
+      <SnowfallBackground className="opacity-80" />
       
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center min-h-screen px-4 pt-4 pb-6">
@@ -122,13 +122,13 @@ export default function Home() {
           )}
         </div>
 
-        {/* Subtle sparkle effects */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cfe-gold rounded-full animate-ping opacity-60" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-cfe-emerald rounded-full animate-ping opacity-40" style={{ animationDelay: '2s' }} />
-          <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cfe-gold rounded-full animate-ping opacity-50" style={{ animationDelay: '4s' }} />
-          <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-cfe-emerald rounded-full animate-ping opacity-30" style={{ animationDelay: '6s' }} />
-        </div>
+                {/* Subtle silver sparkle effects */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-gray-300 rounded-full animate-ping opacity-60" style={{ animationDelay: '0s', boxShadow: '0 0 6px rgba(192, 192, 192, 0.8)' }} />
+                  <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-gray-400 rounded-full animate-ping opacity-40" style={{ animationDelay: '2s', boxShadow: '0 0 4px rgba(192, 192, 192, 0.6)' }} />
+                  <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gray-300 rounded-full animate-ping opacity-50" style={{ animationDelay: '4s', boxShadow: '0 0 5px rgba(192, 192, 192, 0.7)' }} />
+                  <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-gray-400 rounded-full animate-ping opacity-30" style={{ animationDelay: '6s', boxShadow: '0 0 4px rgba(192, 192, 192, 0.5)' }} />
+                </div>
       </div>
 
       {/* Bottom gradient overlay */}
