@@ -36,7 +36,7 @@ export default function Home() {
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-2 space-y-4">
         {/* Video Player */}
-        <div className="w-full max-w-xs">
+        <div className="w-full max-w-[200px] md:max-w-xs">
           <VideoPlayer 
             videoSrc="/CFE Preview.mp4"
             title="CFE Season 4 Preview"
@@ -64,8 +64,8 @@ export default function Home() {
             className={`
               w-full px-4 py-3 text-center text-lg font-semibold rounded-full
               ${isCountdownComplete 
-                ? 'bg-white/10 text-white placeholder-gray-300 border border-white/20 focus:border-cfe-gold focus:outline-none focus:ring-2 focus:ring-cfe-gold/50' 
-                : 'bg-gray-600/50 text-gray-400 placeholder-gray-500 border border-gray-500/30 cursor-not-allowed'
+                ? 'bg-gray-800/50 text-white placeholder-gray-300 border border-gray-600/50 focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/30' 
+                : 'bg-gray-700/50 text-gray-500 placeholder-gray-500 border border-gray-600/30 cursor-not-allowed'
               }
               backdrop-blur-sm transition-all duration-300
             `}
@@ -104,7 +104,7 @@ export default function Home() {
         {/* Status message when countdown complete but no valid code */}
         {isCountdownComplete && !isCodeValid && (
           <div className="text-center w-full px-2">
-            <p className="text-gray-300 text-sm">
+            <p className="text-gray-400 text-sm">
               Enter the secret code to access tickets
             </p>
           </div>
@@ -113,9 +113,9 @@ export default function Home() {
         {/* Subtle sparkle effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cfe-gold rounded-full animate-ping opacity-60" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-cfe-gradient-cyan rounded-full animate-ping opacity-40" style={{ animationDelay: '2s' }} />
-          <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cfe-gradient-purple rounded-full animate-ping opacity-50" style={{ animationDelay: '4s' }} />
-          <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-cfe-gold rounded-full animate-ping opacity-30" style={{ animationDelay: '6s' }} />
+          <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-cfe-emerald rounded-full animate-ping opacity-40" style={{ animationDelay: '2s' }} />
+          <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cfe-gold rounded-full animate-ping opacity-50" style={{ animationDelay: '4s' }} />
+          <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-cfe-emerald rounded-full animate-ping opacity-30" style={{ animationDelay: '6s' }} />
         </div>
       </div>
 
