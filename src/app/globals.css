@@ -58,7 +58,7 @@
   --card-foreground: oklch(0.95 0.01 60);
   --popover: oklch(0.12 0.03 240);
   --popover-foreground: oklch(0.95 0.01 60);
-  --primary: oklch(0.75 0.15 65); /* CFE Gold */
+  
   --primary-foreground: oklch(0.08 0.02 240);
   --secondary: oklch(0.15 0.03 240);
   --secondary-foreground: oklch(0.95 0.01 60);
@@ -74,9 +74,9 @@
   --cfe-forest-green: oklch(0.3 0.15 150);
   --cfe-emerald: oklch(0.4 0.2 160);
   --cfe-gold: oklch(0.8 0.15 65);
-  --cfe-bronze: oklch(0.7 0.12 65);
+  /* --cfe-bronze: oklch(0.7 0.12 65); */
   --cfe-dark-bg: oklch(0.08 0.03 65);
-  --cfe-gradient-cyan: oklch(0.6 0.25 200);
+  /* --cfe-gradient-cyan: oklch(0.6 0.25 200); */
   --cfe-gradient-purple: oklch(0.55 0.3 280);
   --chart-1: oklch(0.6 0.25 200);
   --chart-2: oklch(0.55 0.3 280);

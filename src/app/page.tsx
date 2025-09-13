@@ -34,9 +34,9 @@ export default function Home() {
       <AnimatedWaves className="opacity-30" />
       
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center min-h-screen px-4 pt-8 pb-6">
+      <div className="relative z-10 flex flex-col items-center min-h-screen px-4 pt-4 pb-6">
         {/* Top spacer */}
-        <div className="flex-shrink-0 h-2"></div>
+        <div className="flex-shrink-0 h-1"></div>
         
         {/* Content container */}
         <div className="flex-1 flex flex-col items-center justify-center space-y-4 w-full">
