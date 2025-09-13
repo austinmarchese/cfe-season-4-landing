@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://thecfe-1zu203muc-austinmarcheses-projects.vercel.app'),
+  metadataBase: new URL('https://thecfe.net'),
   title: "The CFE - It's the party of the year",
   description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
   keywords: "CFE, Christmas, Formal, Extravaganza",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "CFE Events",
-    url: 'https://thecfe-1zu203muc-austinmarcheses-projects.vercel.app',
+    url: 'https://thecfe.net',
   },
   twitter: {
     card: "summary",
@@ -50,8 +50,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Additional meta tags for better social sharing */}
-        <meta name="twitter:domain" content="thecfe-1zu203muc-austinmarcheses-projects.vercel.app" />
-        <link rel="canonical" href="https://thecfe-1zu203muc-austinmarcheses-projects.vercel.app" />
+        <meta name="twitter:domain" content="https://thecfe.net" />
+        <link rel="canonical" href="https://thecfe.net" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-cfe-dark-bg min-h-screen`}
