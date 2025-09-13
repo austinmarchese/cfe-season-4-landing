@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thecfe-1zu203muc-austinmarcheses-projects.vercel.app'),
-  title: "CFE - The Party of the Year",
+  title: "The CFE - It's the party of the year",
   description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
   keywords: "CFE, Christmas, Formal, Extravaganza",
   authors: [{ name: "The Incubator" }],
   robots: "index, follow",
   openGraph: {
-    title: "CFE - The Party of the Year",
+    title: "The CFE - It's the party of the year",
     description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
     type: "website",
     locale: "en_US",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CFE - The Party of the Year",
+    title: "The CFE - It's the party of the year",
     description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
     images: ["/logo.png"],
   },

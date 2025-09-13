@@ -51,47 +51,48 @@
 
 :root {
   --radius: 0.625rem;
-  /* CFE Landing Page Colors - Simplified Green & Dark Gold Theme */
-  --background: oklch(0.08 0.02 150); /* Very dark green background */
-  --foreground: #ffffff; /* Pure white text */
-  --card: oklch(0.12 0.03 150);
-  --card-foreground: #ffffff;
-  --popover: oklch(0.12 0.03 150);
-  --popover-foreground: #ffffff;
+  /* Neutral Color Scheme - No Blue Tints */
+  --background: #0a0a0a; /* True neutral dark */
+  --foreground: #fafafa; /* True neutral light */
+  --card: #0a0a0a;
+  --card-foreground: #fafafa;
+  --popover: #0a0a0a;
+  --popover-foreground: #fafafa;
   
   --primary: #FFD600; /* True CFE Gold - CMYK 0-16-100-0 */
-  --primary-foreground: #000000; /* Black text on gold */
-  --secondary: oklch(0.15 0.03 150);
-  --secondary-foreground: #ffffff;
-  --muted: oklch(0.15 0.03 150);
-  --muted-foreground: #a1a1aa; /* Neutral gray */
-  --accent: oklch(0.3 0.15 150); /* Forest green */
-  --accent-foreground: #ffffff;
-  --destructive: oklch(0.7 0.15 65);
-  --border: oklch(0.2 0.05 150);
-  --input: oklch(0.18 0.04 150);
+  --primary-foreground: #0a0a0a;
+  --secondary: #262626; /* Neutral-800 */
+  --secondary-foreground: #fafafa;
+  --muted: #262626; /* Neutral-800 */
+  --muted-foreground: #a3a3a3; /* Neutral-400 */
+  --accent: oklch(0.3 0.15 150); /* Keep CFE Forest green */
+  --accent-foreground: #fafafa;
+  --destructive: #ef4444; /* Red-500 */
+  --destructive-foreground: #fafafa;
+  --border: #404040; /* Neutral-700 */
+  --input: #262626; /* Neutral-800 */
   --ring: #FFD600;
   
-  /* Custom CFE Colors - Simplified */
+  /* Custom CFE Colors - Neutral Base */
   --cfe-forest-green: oklch(0.3 0.15 150);
   --cfe-emerald: oklch(0.4 0.2 150);
   --cfe-gold: #FFD600; /* True CFE Gold - CMYK 0-16-100-0 */
-  --cfe-dark-bg: oklch(0.08 0.02 150);
-  --cfe-gradient-purple: oklch(0.25 0.1 150);
+  --cfe-dark-bg: #0a0a0a;
+  --cfe-gradient-purple: #525252; /* Neutral-600 */
   
   --chart-1: oklch(0.3 0.15 150);
   --chart-2: #FFD600;
   --chart-3: oklch(0.4 0.2 150);
-  --chart-4: oklch(0.25 0.1 150);
+  --chart-4: #525252; /* Neutral-600 */
   --chart-5: #FFD600;
   
-  --sidebar: oklch(0.12 0.03 150);
-  --sidebar-foreground: #ffffff;
+  --sidebar: #171717; /* Neutral-900 */
+  --sidebar-foreground: #fafafa;
   --sidebar-primary: #FFD600;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: oklch(0.15 0.03 150);
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: oklch(0.2 0.05 150);
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #262626; /* Neutral-800 */
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #404040; /* Neutral-700 */
   --sidebar-ring: #FFD600;
 }
 
