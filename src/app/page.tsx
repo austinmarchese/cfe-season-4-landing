@@ -19,8 +19,8 @@ export default function Home() {
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
     setSecretCode(code);
-    // You can change this secret code to whatever you want
-    setIsCodeValid(code === 'CFE2024');
+    // Case-insensitive check for SZN4
+    setIsCodeValid(code.toUpperCase() === 'SZN4');
   };
   
   const handlePurchaseClick = () => {
