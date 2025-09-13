@@ -59,7 +59,7 @@
   --popover: oklch(0.12 0.03 150);
   --popover-foreground: oklch(0.95 0.01 60);
   
-  --primary: oklch(0.5 0.12 45); /* Dark gold */
+  --primary: #FFD600; /* True CFE Gold - CMYK 0-16-100-0 */
   --primary-foreground: oklch(0.95 0.01 60);
   --secondary: oklch(0.15 0.03 150);
   --secondary-foreground: oklch(0.95 0.01 60);
@@ -70,29 +70,29 @@
   --destructive: oklch(0.7 0.15 65);
   --border: oklch(0.2 0.05 150);
   --input: oklch(0.18 0.04 150);
-  --ring: oklch(0.5 0.12 45);
+  --ring: #FFD600;
   
   /* Custom CFE Colors - Simplified */
   --cfe-forest-green: oklch(0.3 0.15 150);
   --cfe-emerald: oklch(0.4 0.2 150);
-  --cfe-gold: oklch(0.5 0.12 45); /* Dark gold */
+  --cfe-gold: #FFD600; /* True CFE Gold - CMYK 0-16-100-0 */
   --cfe-dark-bg: oklch(0.08 0.02 150);
   --cfe-gradient-purple: oklch(0.25 0.1 150);
   
   --chart-1: oklch(0.3 0.15 150);
-  --chart-2: oklch(0.5 0.12 45);
+  --chart-2: #FFD600;
   --chart-3: oklch(0.4 0.2 150);
   --chart-4: oklch(0.25 0.1 150);
-  --chart-5: oklch(0.6 0.08 45);
+  --chart-5: #FFD600;
   
   --sidebar: oklch(0.12 0.03 150);
   --sidebar-foreground: oklch(0.95 0.01 60);
-  --sidebar-primary: oklch(0.5 0.12 45);
+  --sidebar-primary: #FFD600;
   --sidebar-primary-foreground: oklch(0.95 0.01 60);
   --sidebar-accent: oklch(0.15 0.03 150);
   --sidebar-accent-foreground: oklch(0.95 0.01 60);
   --sidebar-border: oklch(0.2 0.05 150);
-  --sidebar-ring: oklch(0.5 0.12 45);
+  --sidebar-ring: #FFD600;
 }
 
 @layer base {

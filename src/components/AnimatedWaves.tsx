@@ -17,9 +17,9 @@ export const AnimatedWaves: React.FC<AnimatedWavesProps> = ({ className = "" }) 
       >
         <defs>
           <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(255, 215, 0, 0.4)" />
-            <stop offset="50%" stopColor="rgba(255, 193, 7, 0.3)" />
-            <stop offset="100%" stopColor="rgba(255, 235, 59, 0.2)" />
+            <stop offset="0%" stopColor="rgba(255, 214, 0, 0.4)" />
+            <stop offset="50%" stopColor="rgba(255, 214, 0, 0.3)" />
+            <stop offset="100%" stopColor="rgba(255, 214, 0, 0.2)" />
           </linearGradient>
           <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(34, 139, 34, 0.4)" />
@@ -43,11 +43,11 @@ export const AnimatedWaves: React.FC<AnimatedWavesProps> = ({ className = "" }) 
         />
         
         {/* Additional flowing elements */}
-        <circle cx="200" cy="300" r="3" fill="rgba(255, 215, 0, 0.8)" className="animate-float-1" />
+        <circle cx="200" cy="300" r="3" fill="rgba(255, 214, 0, 0.8)" className="animate-float-1" />
         <circle cx="400" cy="250" r="2" fill="rgba(34, 139, 34, 0.8)" className="animate-float-2" />
-        <circle cx="600" cy="350" r="4" fill="rgba(255, 193, 7, 0.6)" className="animate-float-3" />
+        <circle cx="600" cy="350" r="4" fill="rgba(255, 214, 0, 0.6)" className="animate-float-3" />
         <circle cx="800" cy="280" r="2" fill="rgba(46, 125, 50, 0.7)" className="animate-float-1" />
-        <circle cx="1000" cy="320" r="3" fill="rgba(255, 215, 0, 0.5)" className="animate-float-2" />
+        <circle cx="1000" cy="320" r="3" fill="rgba(255, 214, 0, 0.5)" className="animate-float-2" />
       </svg>
       
       <style jsx>{`

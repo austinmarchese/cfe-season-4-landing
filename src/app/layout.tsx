@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   authors: [{ name: "The Incubator" }],
   robots: "index, follow",
   openGraph: {
-    title: "CFE Season 4 - Exclusive Performance Event",
+    title: "CFE - The Party of the Year",
     description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
     type: "website",
     locale: "en_US",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CFE Season 4 - Exclusive Performance Event",
+    title: "CFE - The Party of the Year",
     description: "\"The CFE: If you aren't here, you're nobody.\" -Attendee. Join us for CFE Season 4. Limited tickets available.",
     images: ["/logo.png"],
   },
