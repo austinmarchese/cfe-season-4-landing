@@ -26,11 +26,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "CFE Events",
     url: 'https://thecfe.net',
+    images: [
+      {
+        url: "https://thecfe.net/logo.png",
+        width: 400,
+        height: 400,
+        alt: "CFE Logo",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "It's the party of the year",
     description: "\"If you aren't here, you're nobody.\" - CFE Attendee",
+    images: ["https://thecfe.net/logo.png"],
     creator: "@TheIncubator",
     site: "@TheIncubator",
   },
@@ -50,7 +60,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Additional meta tags for better social sharing */}
-        <meta name="twitter:domain" content="https://thecfe.net" />
+        <meta property="og:image:secure_url" content="https://thecfe.net/logo.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="400" />
+        <meta name="twitter:image:src" content="https://thecfe.net/logo.png" />
+        <meta name="twitter:domain" content="thecfe.net" />
         <link rel="canonical" href="https://thecfe.net" />
       </head>
       <body
