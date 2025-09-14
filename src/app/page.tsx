@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function Home() {
-  const [isCountdownComplete, setIsCountdownComplete] = useState(false);
+  const [isCountdownComplete, setIsCountdownComplete] = useState(true);
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
   
   // Calculate today (September 14th) at 4:37 PM EST
   const liveDate = new Date();
   liveDate.setFullYear(2025, 8, 14); // September 14, 2025 (month is 0-indexed)
-  liveDate.setHours(16, 37, 0, 0); // 4:37 PM EST
+  liveDate.setHours(16, 33, 0, 0); // 4:37 PM EST
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
@@ -25,7 +25,7 @@ export default function Home() {
   
   const handlePurchaseClick = () => {
     if (isCountdownComplete && isCodeValid) {
-      window.open('https://account.venmo.com/payment-link?amount=250&note=CFE%20Season%204&recipients=Austin-marchese&txn=pay', '_blank');
+      window.open('https://account.venmo.com/payment-link?amount=250&note=Early%20Elf%20Special%20CFE%20Season%204&recipients=Austin-marchese&txn=pay', '_blank');
     }
   };
   return (
@@ -68,18 +68,26 @@ export default function Home() {
               value={secretCode}
               onChange={handleCodeChange}
               disabled={!isCountdownComplete}
-              placeholder={isCountdownComplete ? "Enter secret code" : "Code required once live"}
+              placeholder={isCountdownComplete ? "🔐 Enter secret code here" : "Code required once live"}
               className={`
-                w-full px-4 py-3 text-center text-lg font-semibold rounded-full
+                w-full px-4 py-4 text-center text-xl font-bold rounded-full
                 ${isCountdownComplete 
-                  ? 'bg-cfe-gold/10 text-white placeholder-gray-300 border border-gray-600/50 focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400/30' 
-                  : 'bg-cfe-gold/10 text-cfe-gold border border-cfe-gold/30 cursor-not-allowed'
+                  ? 'bg-cfe-gold/20 text-white placeholder-gray-300 border-2 border-cfe-gold/70 focus:border-cfe-gold focus:outline-none focus:ring-4 focus:ring-cfe-gold/30 shadow-lg shadow-cfe-gold/20 hover:bg-cfe-gold/30' 
+                  : 'bg-gray-800/20 text-gray-500 border-2 border-gray-600/30 cursor-not-allowed'
                 }
-                backdrop-blur-sm transition-all duration-300
+                backdrop-blur-sm transition-all duration-300 animate-pulse
               `}
             />
+            <div className="text-center mt-2">
+              <p className="text-gray-300 text-xs">
+                💡 Need the secret code? Check your invite!
+              </p>
+            </div>
           </div>
         </div>
+
+        {/* Spacer between input and button */}
+        <div className="h-6"></div>
 
         {/* Bottom section for button */}
         <div className="flex-shrink-0 w-full">
@@ -107,7 +115,7 @@ export default function Home() {
               </Button>
               
               <p className="mt-1 text-gray-300 text-xs">
-                CFE Season 4 • Secure Venmo payment • Limited availability
+                CFE Season 4 • The Early Elf Special • Prices go up on Tuesday
               </p>
             </div>
           )}
@@ -116,7 +124,7 @@ export default function Home() {
           {isCountdownComplete && !isCodeValid && (
             <div className="text-center w-full px-2">
               <p className="text-gray-40party of 0 text-sm">
-                Enter the secret code to access tickets
+                Enter the secret code to get the chance to reserve your spot
               </p>
             </div>
           )}
