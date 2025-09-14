@@ -26,7 +26,7 @@ export default function TestPage() {
   };
 
   const handlePurchaseClick = () => {
-    window.open('https://account.venmo.com/payment-link?amount=250&note=Early%20Elf%20Special%20CFE%20Season%204&recipients=Austin-marchese&txn=pay', '_blank');
+    window.open('https://venmo.com/Austin-marchese?txn=pay&amount=250&note=Early%20Elf%20Special%20CFE%20Season%204', '_blank');
   };
 
   return (
