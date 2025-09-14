@@ -7,14 +7,17 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function Home() {
-  const [isCountdownComplete, setIsCountdownComplete] = useState(false);
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
+  const [isPriceIncreased, setIsPriceIncreased] = useState(false);  
+  // Calculate Tuesday (September 17th) at 4:37 PM EST for price increase
+  const priceIncreaseDate = new Date();
+  priceIncreaseDate.setFullYear(2025, 8, 17); // September 17, 2025 (Tuesday, month is 0-indexed)
+  priceIncreaseDate.setHours(16, 37, 0, 0); // 4:37 PM EST
   
-  // Calculate today (September 14th) at 4:37 PM EST
-  const liveDate = new Date();
-  liveDate.setFullYear(2025, 8, 14); // September 14, 2025 (month is 0-indexed)
-  liveDate.setHours(16, 33, 0, 0); // 4:37 PM EST
+  // Check if current time is past price increase date
+  const currentPrice = new Date() > priceIncreaseDate ? 275 : 250;
+  const priceText = currentPrice === 275 ? "Regular Price" : "Early Elf Special";
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
@@ -24,8 +27,9 @@ export default function Home() {
   };
   
   const handlePurchaseClick = () => {
-    if (isCountdownComplete && isCodeValid) {
-      window.open('https://venmo.com/Austin-marchese?txn=pay&amount=250&note=Early%20Elf%20Special%20CFE%20Season%204', '_blank');
+    if (isCodeValid) {
+      const note = currentPrice === 275 ? 'CFE%20SZN%204%20Ticket' : 'Early%20Elf%20Special%20CFE%20Season%204';
+      window.open(`https://venmo.com/Austin-marchese?txn=pay&amount=${currentPrice}&note=${note}`, '_blank');
     }
   };
   return (
@@ -52,12 +56,12 @@ export default function Home() {
           {/* Countdown Timer */}
           <div className="w-full">
             <CountdownTimer 
-              targetDate={liveDate} 
-              onComplete={() => setIsCountdownComplete(true)}
+              targetDate={priceIncreaseDate} 
+              onComplete={() => {}}
               className="text-center" 
             />
             <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
-              SZN 4 Tickets Live Today at 4:37 PM EST.
+              {currentPrice === 250 ? "Prices go up Tuesday at 4:37 PM EST." : "SZN4 Tickets are live"}
             </p>
           </div>
 
@@ -67,16 +71,12 @@ export default function Home() {
               type="text"
               value={secretCode}
               onChange={handleCodeChange}
-              disabled={!isCountdownComplete}
-              placeholder={isCountdownComplete ? "🔐 Enter secret code here" : "Code required once live"}
-              className={`
+              placeholder="🔐 Enter secret code here"
+              className="
                 w-full px-4 py-4 text-center text-xl font-bold rounded-full
-                ${isCountdownComplete 
-                  ? 'bg-cfe-gold/20 text-white placeholder-gray-300 border-2 border-cfe-gold/70 focus:border-cfe-gold focus:outline-none focus:ring-4 focus:ring-cfe-gold/30 shadow-lg shadow-cfe-gold/20 hover:bg-cfe-gold/30' 
-                  : 'bg-gray-800/20 text-gray-500 border-2 border-gray-600/30 cursor-not-allowed'
-                }
+                bg-cfe-gold/20 text-white placeholder-gray-300 border-2 border-cfe-gold/70 focus:border-cfe-gold focus:outline-none focus:ring-4 focus:ring-cfe-gold/30 shadow-lg shadow-cfe-gold/20 hover:bg-cfe-gold/30
                 backdrop-blur-sm transition-all duration-300 animate-pulse
-              `}
+              "
             />
             <div className="text-center mt-2">
               <p className="text-gray-300 text-xs">
@@ -92,7 +92,7 @@ export default function Home() {
         {/* Bottom section for button */}
         <div className="flex-shrink-0 w-full">
           {/* Purchase Tickets Button - Only visible with valid code */}
-          {isCountdownComplete && isCodeValid && (
+          {isCodeValid && (
             <div className="text-center w-full px-2">
               <Button
                 size="lg"
@@ -110,24 +110,25 @@ export default function Home() {
                   w-full max-w-sm
                 "
               >
-                <span className="relative z-10">Purchase Tickets - $250</span>
+                <span className="relative z-10">Purchase Tickets - ${currentPrice}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </Button>
               
               <p className="mt-1 text-gray-300 text-xs">
-                CFE Season 4 • The Early Elf Special • Prices go up on Tuesday
+                CFE Season 4 • {priceText} • {currentPrice === 250 ? "Prices go up on Tuesday" : "Regular pricing"}
               </p>
             </div>
           )}
 
-          {/* Status message when countdown complete but no valid code */}
-          {isCountdownComplete && !isCodeValid && (
+          {/* Status message when no valid code */}
+          {!isCodeValid && (
             <div className="text-center w-full px-2">
-              <p className="text-gray-40party of 0 text-sm">
+              <p className="text-gray-400 text-sm">
                 Enter the secret code to get the chance to reserve your spot
               </p>
             </div>
           )}
+
         </div>
 
                 {/* Subtle black sparkle effects */}

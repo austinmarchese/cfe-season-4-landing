@@ -9,14 +9,15 @@ import { useState } from "react";
 export default function TestPage() {
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
-  
-  // Test mode - always enabled
-  const isCountdownComplete = true;
 
-  // Calculate today (September 14th) at 4:33 PM EST
-  const liveDate = new Date();
-  liveDate.setFullYear(2025, 8, 14); // September 14, 2025 (month is 0-indexed)
-  liveDate.setHours(16, 33, 0, 0); // 4:33 PM EST
+  // Calculate Tuesday (September 17th) at 4:37 PM EST for price increase
+  const priceIncreaseDate = new Date();
+  priceIncreaseDate.setFullYear(2025, 8, 17); // September 17, 2025 (Tuesday, month is 0-indexed)
+  priceIncreaseDate.setHours(16, 37, 0, 0); // 4:37 PM EST
+  
+  // Test mode - simulate AFTER price increase (force higher price)
+  const currentPrice = 275; // Always show increased price in test
+  const priceText = "Regular Price";
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
@@ -26,7 +27,10 @@ export default function TestPage() {
   };
 
   const handlePurchaseClick = () => {
-    window.open('https://venmo.com/Austin-marchese?txn=pay&amount=250&note=Early%20Elf%20Special%20CFE%20Season%204', '_blank');
+    if (isCodeValid) {
+      const note = 'CFE%20SZN%204%20Ticket';
+      window.open(`https://venmo.com/Austin-marchese?txn=pay&amount=${currentPrice}&note=${note}`, '_blank');
+    }
   };
 
   return (
@@ -58,12 +62,12 @@ export default function TestPage() {
           {/* Countdown Timer */}
           <div className="w-full">
             <CountdownTimer 
-              targetDate={liveDate} 
+              targetDate={priceIncreaseDate} 
               onComplete={() => {}}
               className="text-center" 
             />
             <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
-              SZN 4 Tickets Live Today at 4:33 PM EST.
+              SZN 4 Tickets are live!
             </p>
           </div>
 
@@ -93,46 +97,44 @@ export default function TestPage() {
 
         {/* Bottom section for button */}
         <div className="flex-shrink-0 w-full">
-          {/* Purchase Tickets Button - Always visible in test mode */}
-          <div className="text-center w-full px-2">
-            <Button
-              size="lg"
-              onClick={handlePurchaseClick}
-              disabled={!isCodeValid}
-              className={`
-                px-8 py-3 text-lg font-bold uppercase tracking-wider
-                ${isCodeValid 
-                  ? 'bg-gradient-to-r from-cfe-gold via-cfe-emerald to-cfe-gold hover:from-cfe-emerald hover:via-cfe-gold hover:to-cfe-emerald text-white hover:scale-105' 
-                  : 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                }
-                border-0 rounded-full
-                shadow-2xl shadow-cfe-gold/25 hover:shadow-cfe-emerald/25
-                transition-all duration-300
-                backdrop-blur-sm
-                relative overflow-hidden
-                group
-                w-full max-w-sm
-              `}
-            >
-              <span className="relative z-10">Purchase Tickets - $250</span>
-              {isCodeValid && (
+          {/* Purchase Tickets Button - Only visible with valid code */}
+          {isCodeValid && (
+            <div className="text-center w-full px-2">
+              <Button
+                size="lg"
+                onClick={handlePurchaseClick}
+                className="
+                  px-8 py-3 text-lg font-bold uppercase tracking-wider
+                  bg-gradient-to-r from-cfe-gold via-cfe-emerald to-cfe-gold hover:from-cfe-emerald hover:via-cfe-gold hover:to-cfe-emerald
+                  text-white border-0 rounded-full
+                  shadow-2xl shadow-cfe-gold/25 hover:shadow-cfe-emerald/25
+                  hover:scale-105
+                  transition-all duration-300
+                  backdrop-blur-sm
+                  relative overflow-hidden
+                  group
+                  w-full max-w-sm
+                "
+              >
+                <span className="relative z-10">Purchase Tickets - ${currentPrice}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              )}
-            </Button>
-            
-            <p className="mt-1 text-gray-300 text-xs">
-              CFE Season 4 • The Early Elf Special • Prices go up on Tuesday
-            </p>
-          </div>
+              </Button>
+              
+              <p className="mt-1 text-gray-300 text-xs">
+                CFE Season 4 • {priceText} • Regular pricing
+              </p>
+            </div>
+          )}
 
           {/* Status message when no valid code */}
           {!isCodeValid && (
-            <div className="text-center w-full px-2 mt-4">
+            <div className="text-center w-full px-2">
               <p className="text-gray-400 text-sm">
                 Enter the secret code to get the chance to reserve your spot
               </p>
             </div>
           )}
+
         </div>
 
         {/* Subtle black sparkle effects */}
