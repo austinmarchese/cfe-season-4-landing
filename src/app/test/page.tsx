@@ -61,11 +61,11 @@ export default function TestPage() {
 
           {/* Countdown Timer */}
           <div className="w-full">
-            <CountdownTimer 
+            {/* <CountdownTimer 
               targetDate={priceIncreaseDate} 
               onComplete={() => {}}
               className="text-center" 
-            />
+            /> */}
             <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
               SZN 4 Tickets are live!
             </p>
