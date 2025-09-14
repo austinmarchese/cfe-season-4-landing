@@ -11,10 +11,10 @@ export default function Home() {
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
   
-  // Calculate tomorrow at 4:37 PM EST
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(16, 37, 0, 0); // 4:37 PM
+  // Calculate today (September 14th) at 4:37 PM EST
+  const liveDate = new Date();
+  liveDate.setFullYear(2025, 8, 14); // September 14, 2025 (month is 0-indexed)
+  liveDate.setHours(16, 37, 0, 0); // 4:37 PM EST
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
@@ -52,12 +52,12 @@ export default function Home() {
           {/* Countdown Timer */}
           <div className="w-full">
             <CountdownTimer 
-              targetDate={tomorrow} 
+              targetDate={liveDate} 
               onComplete={() => setIsCountdownComplete(true)}
               className="text-center" 
             />
             <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
-              Tickets Live Tomorrow
+              SZN 4 Tickets Live Today at 4:37 PM EST.
             </p>
           </div>
 
