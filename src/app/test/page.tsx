@@ -50,7 +50,7 @@ export default function TestPage() {
           <div className="w-full max-w-[280px] md:max-w-sm">
             <VideoPlayer 
               videoSrc="/CFE Recap.mp4"
-              title="SZN3 happened. SZN4 is about to begin."
+              title="What did I miss?"
               className="w-full"
             />
           </div>
