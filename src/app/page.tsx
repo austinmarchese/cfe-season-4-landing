@@ -110,7 +110,7 @@ export default function Home() {
                   w-full max-w-sm
                 "
               >
-                <span className="relative z-10">Purchase Tickets - ${currentPrice}</span>
+                <span className="relative z-10">Purchase 2 Tickets - ${currentPrice}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </Button>
               
