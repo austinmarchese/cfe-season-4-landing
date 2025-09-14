@@ -17,7 +17,7 @@ export default function Home() {
   
   // Check if current time is past price increase date
   const currentPrice = new Date() > priceIncreaseDate ? 275 : 250;
-  const priceText = currentPrice === 275 ? "Regular Price" : "Early Elf Special";
+  const priceText = currentPrice === 275 ? "Live Now" : "Early Elf Special";
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
@@ -115,7 +115,7 @@ export default function Home() {
               </Button>
               
               <p className="mt-1 text-gray-300 text-xs">
-                CFE Season 4 • {priceText} • {currentPrice === 250 ? "Prices go up on Tuesday" : "Regular pricing"}
+                CFE Season 4 • {priceText} • {currentPrice === 250 ? "Prices go up on Tuesday" : "Its going to be different."}
               </p>
             </div>
           )}
