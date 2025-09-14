@@ -25,7 +25,7 @@ export default function Home() {
   
   const handlePurchaseClick = () => {
     if (isCountdownComplete && isCodeValid) {
-      window.open('https://account.venmo.com/payment-link?amount=250&note=Early%20Elf%20Special%20CFE%20Season%204&recipients=Austin-marchese&txn=pay', '_blank');
+      window.open('https://venmo.com/Austin-marchese?txn=pay&amount=250&note=Early%20Elf%20Special%20CFE%20Season%204', '_blank');
     }
   };
   return (
@@ -43,8 +43,8 @@ export default function Home() {
           {/* Video Player */}
           <div className="w-full max-w-[280px] md:max-w-sm">
             <VideoPlayer 
-              videoSrc="/CFE Preview.mp4"
-              title="SZN4 Coming Soon"
+              videoSrc="/CFE Recap.mp4"
+              title="SZN3 happened. SZN4 is about to begin."
               className="text-center"
             />
           </div>
