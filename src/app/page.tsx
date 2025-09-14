@@ -12,7 +12,7 @@ export default function Home() {
   const [isPriceIncreased, setIsPriceIncreased] = useState(false);  
   // Calculate Tuesday (September 17th) at 4:37 PM EST for price increase
   const priceIncreaseDate = new Date();
-  priceIncreaseDate.setFullYear(2025, 8, 17); // September 17, 2025 (Tuesday, month is 0-indexed)
+  priceIncreaseDate.setFullYear(2025, 8, 16); // September 17, 2025 (Tuesday, month is 0-indexed)
   priceIncreaseDate.setHours(16, 37, 0, 0); // 4:37 PM EST
   
   // Check if current time is past price increase date
