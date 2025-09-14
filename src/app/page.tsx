@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function Home() {
-  const [isCountdownComplete, setIsCountdownComplete] = useState(true);
+  const [isCountdownComplete, setIsCountdownComplete] = useState(false);
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
   
