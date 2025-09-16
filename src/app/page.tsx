@@ -10,10 +10,10 @@ export default function Home() {
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
   const [isPriceIncreased, setIsPriceIncreased] = useState(false);  
-  // Calculate Tuesday (September 17th) at 4:37 PM EST for price increase
+  // Calculate Tuesday (September 17th) at 11:59 PM EST for price increase
   const priceIncreaseDate = new Date();
   priceIncreaseDate.setFullYear(2025, 8, 16); // September 17, 2025 (Tuesday, month is 0-indexed)
-  priceIncreaseDate.setHours(16, 37, 0, 0); // 4:37 PM EST
+  priceIncreaseDate.setHours(23, 59, 0, 0); // 11:59 PM EST
   
   // Check if current time is past price increase date
   const currentPrice = new Date() > priceIncreaseDate ? 275 : 250;
@@ -60,9 +60,9 @@ export default function Home() {
               onComplete={() => {}}
               className="text-center" 
             /> */}
-            <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
-              {currentPrice === 250 ? "Prices go up Tuesday at 4:37 PM EST." : "SZN4 Tickets are live"}
-            </p>
+             <p className="text-center text-cfe-gold text-sm font-semibold mt-2 tracking-wide">
+               {currentPrice === 250 ? "Prices go up End of Day Tuesday." : "SZN4 Tickets are live"}
+             </p>
           </div>
 
           {/* Secret Code Input */}
@@ -114,9 +114,9 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </Button>
               
-              <p className="mt-1 text-gray-300 text-xs">
-                CFE Season 4 • {priceText} • {currentPrice === 250 ? "Prices go up on Tuesday" : "Its going to be different."}
-              </p>
+                <p className="mt-1 text-gray-300 text-xs">
+                  CFE Season 4 • {priceText} • {currentPrice === 250 ? "Prices go up End of Day Tuesday" : "Its going to be different."}
+                </p>
             </div>
           )}
 

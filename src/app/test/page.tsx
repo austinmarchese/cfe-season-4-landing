@@ -10,13 +10,13 @@ export default function TestPage() {
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
 
-  // Calculate Tuesday (September 17th) at 4:37 PM EST for price increase
+  // Calculate Tuesday (September 17th) at 11:59 PM EST for price increase
   const priceIncreaseDate = new Date();
   priceIncreaseDate.setFullYear(2025, 8, 17); // September 17, 2025 (Tuesday, month is 0-indexed)
-  priceIncreaseDate.setHours(16, 37, 0, 0); // 4:37 PM EST
+  priceIncreaseDate.setHours(23, 59, 0, 0); // 11:59 PM EST
   
   // Test mode - simulate AFTER price increase (force higher price)
-  const currentPrice = 275; // Always show increased price in test
+  const currentPrice = 270; // Always show increased price in test
   const priceText = "Regular Price";
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
