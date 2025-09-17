@@ -16,8 +16,8 @@ export default function Home() {
   priceIncreaseDate.setHours(23, 59, 0, 0); // 11:59 PM EST
   
   // Check if current time is past price increase date
-  const currentPrice = new Date() > priceIncreaseDate ? 275 : 250;
-  const priceText = currentPrice === 275 ? "Live Now" : "Early Elf Special";
+  const currentPrice = new Date() > priceIncreaseDate ? 270 : 250;
+  const priceText = currentPrice === 270 ? "Live Now" : "Early Elf Special";
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
@@ -28,7 +28,7 @@ export default function Home() {
   
   const handlePurchaseClick = () => {
     if (isCodeValid) {
-      const note = currentPrice === 275 ? 'CFE%20SZN%204%20Ticket' : 'Early%20Elf%20Special%20CFE%20Season%204';
+      const note = currentPrice === 270 ? 'CFE%20SZN%204%20Ticket' : 'Early%20Elf%20Special%20CFE%20Season%204';
       window.open(`https://venmo.com/Austin-marchese?txn=pay&amount=${currentPrice}&note=${note}`, '_blank');
     }
   };
