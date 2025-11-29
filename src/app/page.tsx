@@ -9,26 +9,48 @@ import { useState } from "react";
 export default function Home() {
   const [secretCode, setSecretCode] = useState('');
   const [isCodeValid, setIsCodeValid] = useState(false);
-  const [isPriceIncreased, setIsPriceIncreased] = useState(false);  
+  const [activeCodeType, setActiveCodeType] = useState<'SZN4' | 'ENGELLIS' | null>(null);
+  const [isPriceIncreased, setIsPriceIncreased] = useState(false);
   // Calculate Tuesday (September 17th) at 11:59 PM EST for price increase
   const priceIncreaseDate = new Date();
   priceIncreaseDate.setFullYear(2025, 8, 16); // September 17, 2025 (Tuesday, month is 0-indexed)
   priceIncreaseDate.setHours(23, 59, 0, 0); // 11:59 PM EST
-  
+
   // Check if current time is past price increase date
-  const currentPrice = new Date() > priceIncreaseDate ? 270 : 250;
-  const priceText = currentPrice === 270 ? "Live Now" : "Early Elf Special";
-  
+  const basePrice = new Date() > priceIncreaseDate ? 270 : 250;
+  const priceText = basePrice === 270 ? "Live Now" : "Early Elf Special";
+
+  // Calculate final price based on active code
+  const currentPrice = activeCodeType === 'ENGELLIS' ? 125 : basePrice;
+
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const code = e.target.value;
     setSecretCode(code);
-    // Case-insensitive check for SZN4
-    setIsCodeValid(code.toUpperCase() === 'SZN4');
+    const upperCode = code.toUpperCase();
+
+    // Check for both codes (case-insensitive)
+    if (upperCode === 'SZN4') {
+      setIsCodeValid(true);
+      setActiveCodeType('SZN4');
+    } else if (upperCode === 'ENGELLIS') {
+      setIsCodeValid(true);
+      setActiveCodeType('ENGELLIS');
+    } else {
+      setIsCodeValid(false);
+      setActiveCodeType(null);
+    }
   };
   
   const handlePurchaseClick = () => {
     if (isCodeValid) {
-      const note = currentPrice === 270 ? 'CFE%20SZN%204%20Ticket' : 'Early%20Elf%20Special%20CFE%20Season%204';
+      let note = '';
+      if (activeCodeType === 'ENGELLIS') {
+        note = 'Engellis%20Special%20CFE%20Season%204';
+      } else if (basePrice === 270) {
+        note = 'CFE%20SZN%204%20Ticket';
+      } else {
+        note = 'Early%20Elf%20Special%20CFE%20Season%204';
+      }
       window.open(`https://venmo.com/Austin-marchese?txn=pay&amount=${currentPrice}&note=${note}`, '_blank');
     }
   };
