@@ -32,7 +32,8 @@ function currentTierIndex() {
 }
 
 type CodeType = 'SZN5' | 'ENGELLIS';
-const CODES: Record<string, CodeType> = { SZN5: 'SZN5', ENGELLIS: 'ENGELLIS' };
+// Keys are uppercase with spaces removed, so "Season 5", "season5" and "SZN 5" all match
+const CODES: Record<string, CodeType> = { SZN5: 'SZN5', SEASON5: 'SZN5', ENGELLIS: 'ENGELLIS' };
 
 const DETAILS = [
   { icon: CalendarDays, value: 'Sun, Dec 6 · 7:37 PM' },
@@ -58,7 +59,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [tierIndex]);
 
-  const activeCodeType = CODES[secretCode.trim().toUpperCase()] ?? null;
+  const activeCodeType = CODES[secretCode.replace(/\s+/g, '').toUpperCase()] ?? null;
   const tier = PRICE_TIERS[tierIndex];
   const nextTier = PRICE_TIERS[tierIndex + 1];
   const basePrice = tier.price * 2;
