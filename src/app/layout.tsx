@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -14,13 +20,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thecfe.net'),
-  title: "It's the party of the year",
+  title: "CFE Season 5 | You made the list",
   description: "\"If you aren't here, you're nobody.\" - CFE Attendee",
-  keywords: "CFE, Christmas, Formal, Extravaganza",
+  keywords: "CFE, Christmas, Formal, Extravaganza, Season 5",
   authors: [{ name: "The Incubator" }],
   robots: "index, follow",
   openGraph: {
-    title: "It's the party of the year",
+    title: "CFE Season 5 | You made the list",
     description: "\"If you aren't here, you're nobody.\" - CFE Attendee",
     type: "website",
     locale: "en_US",
@@ -29,16 +35,16 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://thecfe.net/logo.png",
-        width: 400,
-        height: 400,
+        width: 500,
+        height: 500,
         alt: "CFE Logo",
         type: "image/png",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "It's the party of the year",
+    card: "summary",
+    title: "CFE Season 5 | You made the list",
     description: "\"If you aren't here, you're nobody.\" - CFE Attendee",
     images: ["https://thecfe.net/logo.png"],
     creator: "@TheIncubator",
@@ -62,14 +68,14 @@ export default function RootLayout({
         {/* Additional meta tags for better social sharing */}
         <meta property="og:image:secure_url" content="https://thecfe.net/logo.png" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="400" />
-        <meta property="og:image:height" content="400" />
+        <meta property="og:image:width" content="500" />
+        <meta property="og:image:height" content="500" />
         <meta name="twitter:image:src" content="https://thecfe.net/logo.png" />
         <meta name="twitter:domain" content="thecfe.net" />
         <link rel="canonical" href="https://thecfe.net" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-cfe-dark-bg min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased bg-cfe-dark-bg min-h-screen`}
       >
         {children}
       </body>

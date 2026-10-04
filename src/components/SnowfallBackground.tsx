@@ -1,86 +1,69 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface SnowfallBackgroundProps {
   className?: string;
 }
 
+interface Flake {
+  id: number;
+  left: number;
+  delay: number;
+  duration: number;
+  drift: number;
+  size: number;
+  opacity: number;
+}
+
 export const SnowfallBackground: React.FC<SnowfallBackgroundProps> = ({ className = "" }) => {
-  // Generate random snowflakes
-  const snowflakes = Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    left: Math.random() * 100,
-    animationDelay: Math.random() * 10,
-    animationDuration: 10 + Math.random() * 20,
-    size: 2 + Math.random() * 4,
-    opacity: 0.3 + Math.random() * 0.7,
-  }));
+  // Generated after mount: Math.random during render causes hydration mismatches
+  const [flakes, setFlakes] = useState<Flake[]>([]);
+
+  useEffect(() => {
+    setFlakes(
+      Array.from({ length: 70 }, (_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        delay: -Math.random() * 25,
+        duration: 14 + Math.random() * 18,
+        drift: -40 + Math.random() * 80,
+        size: 1.5 + Math.random() * 3.5,
+        opacity: 0.25 + Math.random() * 0.6,
+      }))
+    );
+  }, []);
 
   return (
-    <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {/* Dark green background */}
-      <div className="absolute inset-0 bg-green-950" />
-      
-      {/* Snowflakes */}
-      {snowflakes.map((flake) => (
+    <div className={`absolute inset-0 overflow-hidden ${className}`} aria-hidden>
+      {/* Deep evergreen with a warm gold glow up top */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#0f3d26_0%,_#062417_45%,_#03140c_100%)]" />
+      <div className="absolute -top-40 left-1/2 h-96 w-[40rem] -translate-x-1/2 rounded-full bg-cfe-gold/10 blur-3xl" />
+
+      {flakes.map((flake) => (
         <div
           key={flake.id}
-          className="absolute animate-snowfall"
+          className="absolute -top-4 rounded-full bg-white animate-snowfall"
           style={{
             left: `${flake.left}%`,
-            animationDelay: `${flake.animationDelay}s`,
-            animationDuration: `${flake.animationDuration}s`,
-            '--flake-size': `${flake.size}px`,
-            '--flake-opacity': flake.opacity.toString(),
-          } as React.CSSProperties & { [key: string]: string }}
-        >
-          <div
-            className="bg-silver rounded-full"
-            style={{
-              width: `${flake.size}px`,
-              height: `${flake.size}px`,
-              opacity: flake.opacity,
-              background: 'radial-gradient(circle, #404040 0%, #303030 50%, #202020 100%)',
-              boxShadow: '0 0 6px rgba(64, 64, 64, 0.8)',
-            }}
-          />
-        </div>
+            width: flake.size,
+            height: flake.size,
+            opacity: flake.opacity,
+            animationDelay: `${flake.delay}s`,
+            animationDuration: `${flake.duration}s`,
+            boxShadow: '0 0 6px rgba(255, 255, 255, 0.6)',
+            '--drift': `${flake.drift}px`,
+          } as React.CSSProperties}
+        />
       ))}
-      
+
       <style jsx>{`
         @keyframes snowfall {
-          0% {
-            transform: translateY(-100vh) translateX(0px) rotate(0deg);
-            opacity: 0;
-          }
-          10% {
-            opacity: var(--flake-opacity);
-          }
-          90% {
-            opacity: var(--flake-opacity);
-          }
-          100% {
-            transform: translateY(100vh) translateX(100px) rotate(360deg);
-            opacity: 0;
-          }
+          from { transform: translate3d(0, -5vh, 0); }
+          to { transform: translate3d(var(--drift), 105vh, 0); }
         }
-        
         .animate-snowfall {
           animation: snowfall linear infinite;
-        }
-        
-        /* Additional snowflake variations */
-        .animate-snowfall:nth-child(3n) {
-          animation-direction: reverse;
-        }
-        
-        .animate-snowfall:nth-child(4n) {
-          animation-timing-function: ease-in-out;
-        }
-        
-        .animate-snowfall:nth-child(5n) {
-          transform-origin: 50% 0%;
         }
       `}</style>
     </div>

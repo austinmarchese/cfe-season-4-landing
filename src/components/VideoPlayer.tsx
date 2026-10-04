@@ -26,13 +26,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   };
 
   return (
-    <div className={`relative group ${className}`}>
-      <div className="relative overflow-hidden rounded-xl bg-black/20 backdrop-blur-sm border border-white/10">
+    <div className={`relative group aspect-[9/16] ${className}`}>
+      <div className="relative h-full overflow-hidden rounded-2xl bg-black/30 backdrop-blur-sm border border-cfe-gold/30 shadow-2xl shadow-cfe-gold/10">
         {/* Video element or thumbnail */}
         {isPlaying ? (
           <video
             id="cfe-video"
-            className="w-full aspect-[9/16]"
+            className="h-full w-full bg-black object-contain"
             controls
             autoPlay
             src={videoSrc}
@@ -40,7 +40,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             Your browser does not support the video tag.
           </video>
         ) : (
-          <div className="relative aspect-[9/16] cursor-pointer" onClick={handlePlay}>
+          <div className="relative h-full cursor-pointer" onClick={handlePlay}>
             <video
               className="w-full h-full object-cover"
               muted
@@ -63,9 +63,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         )}
         
         {/* Video title overlay */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-          <h3 className="text-white font-semibold text-lg">{title}</h3>
-        </div>
+        {!isPlaying && (
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+            <h3 className="text-white font-semibold text-lg">{title}</h3>
+          </div>
+        )}
       </div>
       
       {/* Glow effect */}

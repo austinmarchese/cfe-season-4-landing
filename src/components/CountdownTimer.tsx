@@ -3,108 +3,44 @@
 import React, { useState, useEffect } from 'react';
 
 interface CountdownTimerProps {
-  targetDate?: Date;
-  onComplete?: () => void;
+  targetDate: Date;
   className?: string;
 }
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
+const UNITS = [
+  { label: 'Days', ms: 86_400_000, mod: Infinity },
+  { label: 'Hrs', ms: 3_600_000, mod: 24 },
+  { label: 'Min', ms: 60_000, mod: 60 },
+  { label: 'Sec', ms: 1_000, mod: 60 },
+] as const;
 
-export const CountdownTimer: React.FC<CountdownTimerProps> = ({ 
-  targetDate = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000 + 15 * 60 * 60 * 1000 + 31 * 60 * 1000 + 29 * 1000), // Default: 2 days, 15 hours, 31 minutes, 29 seconds from now
-  onComplete,
-  className = ""
-}) => {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [mounted, setMounted] = useState(false);
+export const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate, className = "" }) => {
+  // null until mounted so server and client render the same placeholder
+  const [msLeft, setMsLeft] = useState<number | null>(null);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
-    const calculateTimeLeft = (): TimeLeft => {
-      const difference = targetDate.getTime() - new Date().getTime();
-      
-      if (difference > 0) {
-        return {
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        };
-      }
-      
-      // Countdown completed
-      if (onComplete) {
-        onComplete();
-      }
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    };
-
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    // Set initial time
-    setTimeLeft(calculateTimeLeft());
-
+    const tick = () => setMsLeft(Math.max(0, targetDate.getTime() - Date.now()));
+    tick();
+    const timer = setInterval(tick, 1000);
     return () => clearInterval(timer);
-  }, [targetDate, mounted, onComplete]);
-
-  const formatNumber = (num: number): string => {
-    return num.toString().padStart(2, '0');
-  };
-
-  if (!mounted) {
-    // Return a placeholder to prevent hydration mismatch
-    return (
-      <div className={`flex items-center justify-center space-x-4 ${className}`}>
-      <div className="text-center">
-        <div className="text-xl md:text-3xl font-mono font-bold text-white digital-display flex justify-center items-center space-x-2">
-          <span className="w-6 text-center">02</span>
-          <span>:</span>
-          <span className="w-6 text-center">15</span>
-          <span>:</span>
-          <span className="w-6 text-center">31</span>
-          <span>:</span>
-          <span className="w-6 text-center">29</span>
-        </div>
-      </div>
-      </div>
-    );
-  }
+  }, [targetDate]);
 
   return (
-    <div className={`flex items-center justify-center space-x-4 ${className}`}>
-      <div className="text-center">
-        <div className="text-xl md:text-3xl font-mono font-bold text-white digital-display flex justify-center items-center space-x-2">
-          <span className="w-6 text-center">{formatNumber(timeLeft.days)}</span>
-          <span>:</span>
-          <span className="w-6 text-center">{formatNumber(timeLeft.hours)}</span>
-          <span>:</span>
-          <span className="w-6 text-center">{formatNumber(timeLeft.minutes)}</span>
-          <span>:</span>
-          <span className="w-6 text-center">{formatNumber(timeLeft.seconds)}</span>
-        </div>
-      </div>
-      
-      <style jsx>{`
-        .digital-display {
-          text-shadow: 
-            0 0 2px currentColor,
-            0 0 4px currentColor,
-            0 0 8px rgba(255, 215, 0, 0.3);
-          filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.2));
-        }
-      `}</style>
+    <div className={`flex items-start justify-center gap-1 ${className}`}>
+      {UNITS.map((unit, i) => {
+        const value = msLeft === null ? null : Math.floor(msLeft / unit.ms) % unit.mod;
+        return (
+          <React.Fragment key={unit.label}>
+            {i > 0 && <span className="font-mono text-lg font-bold leading-none text-cfe-gold/50">:</span>}
+            <div className="flex w-8 flex-col items-center">
+              <span className="font-mono text-lg font-bold leading-none tabular-nums text-white [text-shadow:0_0_12px_rgba(255,214,0,0.35)]">
+                {value === null ? '--' : value.toString().padStart(2, '0')}
+              </span>
+              <span className="mt-0.5 text-[8px] uppercase tracking-[0.15em] text-cfe-gold/70">{unit.label}</span>
+            </div>
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 };
