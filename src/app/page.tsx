@@ -80,7 +80,7 @@ export default function Home() {
     <div className="relative h-[100dvh] overflow-hidden bg-[#03140c] text-white">
       <SnowfallBackground />
 
-      <main className="relative z-10 mx-auto flex h-full w-full max-w-md flex-col items-center gap-3 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      <main className="relative z-10 mx-auto flex h-full w-full max-w-md flex-col items-center gap-3 px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         {/* Header */}
         <header className="flex shrink-0 items-center gap-3">
           <Image

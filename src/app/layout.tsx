@@ -55,6 +55,8 @@ export const metadata: Metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
+  viewportFit: 'cover', // lets env(safe-area-inset-*) work under the notch and Safari toolbar
+  themeColor: '#03140c',
 };
 
 export default function RootLayout({
@@ -63,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-cfe-dark-bg">
       <head>
         {/* Additional meta tags for better social sharing */}
         <meta property="og:image:secure_url" content="https://thecfe.net/logo.png" />

@@ -35,7 +35,7 @@ export const SnowfallBackground: React.FC<SnowfallBackgroundProps> = ({ classNam
   }, []);
 
   return (
-    <div className={`absolute inset-0 overflow-hidden ${className}`} aria-hidden>
+    <div className={`fixed inset-0 overflow-hidden ${className}`} aria-hidden>
       {/* Deep evergreen with a warm gold glow up top */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#0f3d26_0%,_#062417_45%,_#03140c_100%)]" />
       <div className="absolute -top-40 left-1/2 h-96 w-[40rem] -translate-x-1/2 rounded-full bg-cfe-gold/10 blur-3xl" />

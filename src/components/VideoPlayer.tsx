@@ -65,7 +65,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         {/* Video title overlay */}
         {!isPlaying && (
           <div className="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-            <h3 className="text-white font-semibold text-lg">{title}</h3>
+            <h3 className="text-white font-semibold text-base leading-tight">{title}</h3>
           </div>
         )}
       </div>

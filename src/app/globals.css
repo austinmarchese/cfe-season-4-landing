@@ -78,7 +78,7 @@
   --cfe-forest-green: oklch(0.3 0.15 150);
   --cfe-emerald: oklch(0.4 0.2 150);
   --cfe-gold: #FFD600; /* True CFE Gold - CMYK 0-16-100-0 */
-  --cfe-dark-bg: #0a0a0a;
+  --cfe-dark-bg: #03140c; /* Matches the page's evergreen so iOS safe areas blend in */
   --cfe-gradient-purple: #525252; /* Neutral-600 */
   
   --chart-1: oklch(0.3 0.15 150);
