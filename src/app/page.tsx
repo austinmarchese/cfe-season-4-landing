@@ -4,6 +4,7 @@ import Image from "next/image";
 import CountdownTimer from "@/components/CountdownTimer";
 import VideoPlayer from "@/components/VideoPlayer";
 import SnowfallBackground from "@/components/SnowfallBackground";
+import UnlockOverlay from "@/components/UnlockOverlay";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, GlassWater, MapPin, Gift, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -35,6 +36,10 @@ type CodeType = 'SZN5' | 'ENGELLIS';
 // Keys are uppercase with spaces removed, so "Season 5", "season5" and "SZN 5" all match
 const CODES: Record<string, CodeType> = { SZN5: 'SZN5', SEASON5: 'SZN5', ENGELLIS: 'ENGELLIS' };
 
+function matchCode(input: string): CodeType | null {
+  return CODES[input.replace(/\s+/g, '').toUpperCase()] ?? null;
+}
+
 const DETAILS = [
   { icon: CalendarDays, value: 'Sun, Dec 6 · 7:37 PM' },
   { icon: GlassWater, value: 'Open bar' },
@@ -45,6 +50,19 @@ const DETAILS = [
 export default function Home() {
   const [secretCode, setSecretCode] = useState('');
   const [tierIndex, setTierIndex] = useState(0);
+  const [linkCode, setLinkCode] = useState<string | null>(null);
+
+  // Invite links carry the code, e.g. thecfe.net/?code=SZN5 (utm_content works too)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromLink = params.get('code') ?? params.get('utm_content');
+    if (fromLink && matchCode(fromLink)) setLinkCode(fromLink.replace(/\s+/g, '').toUpperCase());
+  }, []);
+
+  const handleUnlockContinue = () => {
+    if (linkCode) setSecretCode(linkCode);
+    setLinkCode(null);
+  };
 
   // Step to the next price tier exactly when the current one ends
   useEffect(() => {
@@ -59,7 +77,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [tierIndex]);
 
-  const activeCodeType = CODES[secretCode.replace(/\s+/g, '').toUpperCase()] ?? null;
+  const activeCodeType = matchCode(secretCode);
   const tier = PRICE_TIERS[tierIndex];
   const nextTier = PRICE_TIERS[tierIndex + 1];
   const basePrice = tier.price * 2;
@@ -79,6 +97,7 @@ export default function Home() {
   return (
     <div className="relative h-[100dvh] overflow-hidden bg-[#03140c] text-white">
       <SnowfallBackground />
+      {linkCode && <UnlockOverlay code={linkCode} onContinue={handleUnlockContinue} />}
 
       <main className="relative z-10 mx-auto flex h-full w-full max-w-md flex-col items-center gap-3 px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         {/* Header */}
