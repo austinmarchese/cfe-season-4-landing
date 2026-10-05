@@ -32,9 +32,9 @@ function currentTierIndex() {
   return i === -1 ? PRICE_TIERS.length - 1 : i;
 }
 
-type CodeType = 'SZN5' | 'ENGELLIS';
+type CodeType = 'SZN5' | 'ENGELLIS' | 'HOTGIRLSZN';
 // Keys are uppercase with spaces removed, so "Season 5", "season5" and "SZN 5" all match
-const CODES: Record<string, CodeType> = { SZN5: 'SZN5', SEASON5: 'SZN5', ENGELLIS: 'ENGELLIS' };
+const CODES: Record<string, CodeType> = { SZN5: 'SZN5', SEASON5: 'SZN5', ENGELLIS: 'ENGELLIS', HOTGIRLSZN: 'HOTGIRLSZN' };
 
 function matchCode(input: string): CodeType | null {
   return CODES[input.replace(/\s+/g, '').toUpperCase()] ?? null;
@@ -80,14 +80,17 @@ export default function Home() {
   const activeCodeType = matchCode(secretCode);
   const tier = PRICE_TIERS[tierIndex];
   const nextTier = PRICE_TIERS[tierIndex + 1];
-  const basePrice = tier.price * 2;
-  const currentPrice = activeCodeType === 'ENGELLIS' ? ENGELLIS_PRICE : basePrice;
+  // HOTGIRLSZN unlocks a single ticket; every other code buys the pair
+  const ticketCount = activeCodeType === 'HOTGIRLSZN' ? 1 : 2;
+  const currentPrice = activeCodeType === 'ENGELLIS' ? ENGELLIS_PRICE : tier.price * ticketCount;
 
   const handlePurchaseClick = () => {
     if (!activeCodeType) return;
     const note = activeCodeType === 'ENGELLIS'
       ? 'Engellis Special CFE Season 5'
-      : `CFE Season 5 ${tier.label}`;
+      : activeCodeType === 'HOTGIRLSZN'
+        ? `CFE Season 5 Hot Girl SZN 1 Ticket ${tier.label}`
+        : `CFE Season 5 ${tier.label}`;
     window.open(
       `https://venmo.com/Austin-marchese?txn=pay&amount=${currentPrice}&note=${encodeURIComponent(note)}`,
       '_blank'
@@ -177,7 +180,7 @@ export default function Home() {
             })}
           </ol>
           <p className="border-t border-cfe-gold/15 py-0.5 text-center text-[10px] text-white/55">
-            Per ticket · Sold in pairs · All times ET
+            Per ticket · {ticketCount === 1 ? 'Single ticket unlocked 💅' : 'Sold in pairs'} · All times ET
           </p>
         </div>
 
@@ -213,7 +216,7 @@ export default function Home() {
                   shadow-2xl shadow-cfe-gold/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-cfe-gold/50
                 "
               >
-                <span className="relative z-10">Reserve 2 Tickets · ${currentPrice}</span>
+                <span className="relative z-10">Reserve {ticketCount === 1 ? '1 Ticket' : '2 Tickets'} · ${currentPrice}</span>
                 <div className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-[100%]" />
               </Button>
             ) : (
