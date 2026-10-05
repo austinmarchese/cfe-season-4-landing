@@ -41,7 +41,7 @@ function matchCode(input: string): CodeType | null {
 }
 
 const DETAILS = [
-  { icon: CalendarDays, value: 'Sun, Dec 6 · 7:37 PM' },
+  { icon: CalendarDays, value: 'Sat, Dec 5 · 7:37 PM' },
   { icon: GlassWater, value: 'Open bar' },
   { icon: MapPin, value: 'Manhattan' },
   { icon: Gift, value: 'Theme TBA 🎅' },
